@@ -14,10 +14,10 @@ setup(
     packages=['hs110_exporter'],
     install_requires=["prometheus_client>=0.4.2"],
     classifiers=[
-        "Development Status :: 1 - Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Information Technology",
         "Intended Audience :: System Administrators",
-        "Topic :: System :: Energy :: Monitoring",
-        "License :: Apache Software License",
+        "Topic :: System :: Networking :: Monitoring",
+        "License :: OSI Approved :: Apache Software License"
     ],
 )

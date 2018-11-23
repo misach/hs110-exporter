@@ -6,7 +6,6 @@ from struct import pack
 
 from prometheus_client import Metric, CollectorRegistry, generate_latest, Gauge, Info
 
-
 # Encryption and Decryption of TP-Link Smart Home Protocol
 # XOR Autokey Cipher with starting key = 171
 def encrypt(string):
@@ -27,11 +26,6 @@ def decrypt(string):
 		result += chr(a)
 	return result
 
-
-
-
-
-
 def collect_hs110(host):
   """Scrape a host and return prometheus text format for it"""
 
@@ -39,14 +33,9 @@ def collect_hs110(host):
   # Set target IP, port and command to send
   ip = host
   port = 9999
-  cmd_enery = '{"emeter":{"get_realtime":{}}}'
+  cmd_energy = '{"emeter":{"get_realtime":{}}}'
   cmd_info = '{"system":{"get_sysinfo":{}}}'
 
-  #metrics = {}
-  
-  #class Collector():
-  #  def collect(self):
-  #    return metrics.values()
   registry = CollectorRegistry()
   #registry.register(Collector())
   duration = Gauge('hs110_scrape_duration_seconds', 'Time this HS110 scrape took, in seconds', registry=registry)
@@ -57,7 +46,7 @@ def collect_hs110(host):
     socket.setdefaulttimeout(10)
     sock_tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock_tcp.connect((ip, port))
-    sock_tcp.send(encrypt(cmd_enery))
+    sock_tcp.send(encrypt(cmd_energy))
     data = sock_tcp.recv(2048)
     sock_tcp.send(encrypt(cmd_info))
     data_info = sock_tcp.recv(2048)
