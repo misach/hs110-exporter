@@ -43,7 +43,7 @@ Example config:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: localhost:9517  # The HS110 exporter's real hostname:port.
+        replacement: localhost:9498  # The HS110 exporter's real hostname:port.
 ```
 
 This setup allows Prometheus to provide scheduling and service discovery, as
